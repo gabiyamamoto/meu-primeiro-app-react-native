@@ -6,112 +6,117 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function App() {
   return (
-    <View style={styles.body}>
-      <View style={styles.header}>
-        <View style={styles.sombraChapeu}>
-          <Image
-            source={require("./assets/chapeu.png")}
-            style={styles.chapeu}
-          />
-        </View>
-      </View>
-
-      <View style={styles.main}>
-        <View style={styles.secaoTitulo}>
-          <Text style={styles.bemVindo}>Bem-vindo de volta</Text>
-
-          <Text style={styles.subtitulo}>Acesse sua conta do SENAI</Text>
-        </View>
-        <View style={styles.secaoLogin}>
-          <Text style={styles.label}>E-mail</Text>
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="envelope"
-              size={15}
-              color="#a3a3a3"
-              style={{ marginRight: 10 }}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="seu@email.com"
-              placeholderTextColor="#979797"
-            ></TextInput>
-          </View>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.inputContainer}>
-            <FontAwesome
-              name="lock"
-              size={18}
-              color="#a3a3a3"
-              style={{ marginRight: 10 }}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="********"
-              placeholderTextColor="#979797"
-              secureTextEntry={true}
-            ></TextInput>
-            <FontAwesome name="eye" size={18} color="#a3a3a3" />
-          </View>
-        </View>
-
-        <View style={styles.secaoEsqueci}>
-          <Text style={styles.textoRoxo}>Esqueci minha senha</Text>
-        </View>
-
-        <View style={styles.secaoBotao}>
-          <TouchableOpacity style={styles.botao} activeOpacity={0.7}>
-            <Text style={styles.textoBotao}>Entrar →</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.secaoEntreCom}>
-          <View style={styles.line} />
-          <Text style={styles.textoCinza}>Ou entre com</Text>
-          <View style={styles.line} />
-        </View>
-
-        <View style={styles.secaoPlataformas}>
-          <View style={styles.iconsWrapper}>
+    <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: "#F7F9FA" }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.header}>
+          <View style={styles.sombraChapeu}>
             <Image
-              source={require("./assets/github.png")}
-              style={styles.github}
-            />
-          </View>
-          <View style={styles.iconsWrapper}>
-            <Image
-              source={require("./assets/google.png")}
-              style={styles.google}
-            />
-          </View>
-          <View style={styles.iconsWrapper}>
-            <Image
-              source={require("./assets/insta.png")}
-              style={styles.insta}
+              source={require("./assets/chapeu.png")}
+              style={styles.chapeu}
             />
           </View>
         </View>
 
-        <View style={styles.secaoCadastrar}>
-          <Text style={styles.textoCinza}>Não tem uma conta?</Text>
-          <Text style={styles.textoRoxo}>Cadastre-se</Text>
+        <View style={styles.main}>
+          <View style={styles.secaoTitulo}>
+            <Text style={styles.bemVindo}>Bem-vindo de volta</Text>
+
+            <Text style={styles.subtitulo}>Acesse sua conta do SENAI</Text>
+          </View>
+          <View style={styles.secaoLogin}>
+            <Text style={styles.label}>E-mail</Text>
+            <View style={styles.inputContainer}>
+              <FontAwesome
+                name="envelope"
+                size={15}
+                color="#a3a3a3"
+                style={{ marginRight: 10 }}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="seu@email.com"
+                placeholderTextColor="#979797"
+              ></TextInput>
+            </View>
+            <Text style={styles.label}>Senha</Text>
+            <View style={styles.inputContainer}>
+              <FontAwesome
+                name="lock"
+                size={18}
+                color="#a3a3a3"
+                style={{ marginRight: 10 }}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="********"
+                placeholderTextColor="#979797"
+                secureTextEntry={true}
+              ></TextInput>
+              <FontAwesome name="eye" size={18} color="#a3a3a3" />
+            </View>
+          </View>
+
+          <View style={styles.secaoEsqueci}>
+            <Text style={styles.textoRoxo}>Esqueci minha senha</Text>
+          </View>
+
+          <View style={styles.secaoBotao}>
+            <TouchableOpacity style={styles.botao} activeOpacity={0.7}>
+              <Text style={styles.textoBotao}>Entrar →</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.secaoEntreCom}>
+            <View style={styles.line} />
+            <Text style={styles.textoCinza}>Ou entre com</Text>
+            <View style={styles.line} />
+          </View>
+
+          <View style={styles.secaoPlataformas}>
+            <View style={styles.iconsWrapper}>
+              <Image
+                source={require("./assets/github.png")}
+                style={styles.github}
+              />
+            </View>
+            <View style={styles.iconsWrapper}>
+              <Image
+                source={require("./assets/google.png")}
+                style={styles.google}
+              />
+            </View>
+            <View style={styles.iconsWrapper}>
+              <Image
+                source={require("./assets/insta.png")}
+                style={styles.insta}
+              />
+            </View>
+          </View>
+
+          <View style={styles.secaoCadastrar}>
+            <Text style={styles.textoCinza}>Não tem uma conta?</Text>
+            <Text style={styles.textoRoxo}>Cadastre-se</Text>
+          </View>
         </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: "#F7F9FA",
-  },
-
   header: {
     width: "100%",
     paddingVertical: 16,
